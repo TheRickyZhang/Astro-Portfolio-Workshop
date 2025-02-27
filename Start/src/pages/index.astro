@@ -49,7 +49,14 @@ const projects = (await getCollection('work'))
 				/>
 			</header>
 
-			<Skills />
+			
+			<Skills
+				skills={[
+					{ title: "Full Stack", description: "I'm really good at rock balancing", icon: "terminal-window" },
+					{ title: "Industry Leader", description: "Invested in Google, Apple and NVIDIA", icon: "trophy" },
+					{ title: "Strategic Thinking", description: "Played chess a few times", icon: "strategy" }
+				]}
+			/>
 		</div>
 
 		<main class="wrapper stack gap-20 lg:gap-48">
