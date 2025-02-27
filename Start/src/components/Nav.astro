@@ -2,6 +2,7 @@
 import Icon from './Icon.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import type { iconPaths } from './IconPaths';
+import MenuButtonReact from './MenuButtonReact';
 
 /** Main menu items */
 const textLinks: { label: string; href: string }[] = [
@@ -34,7 +35,6 @@ const isCurrentPage = (href: string) => {
 		</a>
 		<!-- Menu-button is a custom component from astro -->
 		<!-- When initiailized, takes everything in template and injects it into DOM -->
-		<!-- When initiailized, takes everything in template and injects it into DOM -->
 		<menu-button>
 			<template>
 				<button class="menu-button" aria-expanded="false">
@@ -43,6 +43,7 @@ const isCurrentPage = (href: string) => {
 				</button>
 			</template>
 		</menu-button>
+		<!-- <MenuButtonReact client:load textLinks={textLinks} /> -->
 	</div>
 	<!-- This noscript is a fallback if javascript not enabled -->
 	<noscript>
@@ -112,7 +113,6 @@ const isCurrentPage = (href: string) => {
 			super();
 
 			// Inject menu toggle button when JS runs.
-			// We are 
 			this.appendChild(this.querySelector('template')!.content.cloneNode(true));
 			const btn = this.querySelector('button')!;
 
