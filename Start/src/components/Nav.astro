@@ -6,18 +6,15 @@ import type { iconPaths } from './IconPaths';
 /** Main menu items */
 const textLinks: { label: string; href: string }[] = [
 	{ label: 'Home', href: '/' },
-	{ label: 'Work', href: '/work/' },
-	{ label: 'About', href: '/about/' },
+	{ label: 'Projects', href: '/projects/' },
+	{ label: 'Blogs', href: '/blogs/' },
 ];
 
 /** Icon links to social media — edit these with links to your profiles! */
 const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[] = [
-	{ label: 'Twitter', href: 'https://twitter.com/me', icon: 'twitter-logo' },
-	{ label: 'Twitch', href: 'https://twitch.tv/me', icon: 'twitch-logo' },
-	{ label: 'GitHub', href: 'https://github.com/me', icon: 'github-logo' },
-	{ label: 'CodePen', href: 'https://codepen.io/me', icon: 'codepen-logo' },
-	{ label: 'dribbble', href: 'https://dribbble.com/me', icon: 'dribbble-logo' },
-	{ label: 'YouTube', href: 'https://www.youtube.com/@me/', icon: 'youtube-logo' },
+	{ label: 'GitHub', href: 'https://github.com/TheRickyZhang', icon: 'github-logo' },
+	{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/therickyzhang', icon: 'linkedin-logo' },
+	{ label: 'Codeforces', href: 'https://clist.by/coder/TheRickyZhang/', icon: 'code' },
 ];
 
 /** Test if a link is pointing to the current page. */
@@ -33,8 +30,11 @@ const isCurrentPage = (href: string) => {
 	<div class="menu-header">
 		<a href="/" class="site-title">
 			<Icon icon="terminal-window" color="var(--accent-regular)" size="1.6em" gradient />
-			Jeanine White
+			Ricky Zhang
 		</a>
+		<!-- Menu-button is a custom component from astro -->
+		<!-- When initiailized, takes everything in template and injects it into DOM -->
+		<!-- When initiailized, takes everything in template and injects it into DOM -->
 		<menu-button>
 			<template>
 				<button class="menu-button" aria-expanded="false">
@@ -44,6 +44,7 @@ const isCurrentPage = (href: string) => {
 			</template>
 		</menu-button>
 	</div>
+	<!-- This noscript is a fallback if javascript not enabled -->
 	<noscript>
 		<ul class="nav-items">
 			{
@@ -102,12 +103,16 @@ const isCurrentPage = (href: string) => {
 	</div>
 </nav>
 
+<!-- Declare what javascript is run -->
 <script>
+	// Extending HTMLElement allows for custom HTML element
+	// Operates natively in the browser, as opposed ot React's virtual DOM
 	class MenuButton extends HTMLElement {
 		constructor() {
 			super();
 
 			// Inject menu toggle button when JS runs.
+			// We are 
 			this.appendChild(this.querySelector('template')!.content.cloneNode(true));
 			const btn = this.querySelector('button')!;
 
@@ -134,10 +139,14 @@ const isCurrentPage = (href: string) => {
 			const mediaQueries = window.matchMedia('(min-width: 50em)');
 			handleViewports(mediaQueries);
 			mediaQueries.addEventListener('change', handleViewports);
+
+			// ^ Basically do everything manually
 		}
 	}
+	// Add this to customElements to use
 	customElements.define('menu-button', MenuButton);
 </script>
+
 
 <style>
 	nav {
