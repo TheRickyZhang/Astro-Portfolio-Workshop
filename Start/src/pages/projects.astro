@@ -7,6 +7,7 @@ import ContactCTA from '../components/ContactCTA.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
 import Hero from '../components/Hero.astro';
 import Grid from '../components/Grid.astro';
+import Skills from '../components/Skills.astro';
 
 const projects = (await getCollection('work')).sort(
 	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
@@ -35,5 +36,13 @@ const projects = (await getCollection('work')).sort(
 			</Grid>
 		</main>
 		<ContactCTA />
+		<Skills
+			skills={[
+				{ title: "Industry", description: "literally manga", icon: "tiktok-logo" },
+				{ title: "Optimizations", description: "Rust x Haskall", icon: "paper-plane-tilt" },
+				{ title: "Content Creation", description: "What's up everyone toDAY we are going to", icon: "youtube-logo" },
+				{ title: "And more!", description: "Coming soon!", icon: "microphone-stage" }
+			]}
+		/>
 	</div>
 </BaseLayout>
