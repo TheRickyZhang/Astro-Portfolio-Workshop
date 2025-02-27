@@ -15,5 +15,8 @@
     "@astrojs/react": "^4.2.1",
     "astro": "^5.3.0",
     "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.5"
   }
 }

@@ -3,26 +3,31 @@
 // https://docs.astro.build/en/core-concepts/layouts/
 
 // Component Imports
-import MainHead from '../components/MainHead.astro';
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
+import MainHead from '@/components/MainHead.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
 
 interface Props {
 	title?: string | undefined;
 	description?: string | undefined;
+	layoutType?: 'blog' | 'project'; // Added
 }
 
-const { title, description } = Astro.props;
+// const { title, description } = Astro.props;
+const { title, description, layoutType } = Astro.props; // Added
+
 ---
 
 <html lang="en">
 	<head>
 		<MainHead title={title} description={description} />
 	</head>
+
+	<!-- Add class={layoutType} here -->
 	<body>
 		<div class="stack backgrounds">
 			<Nav />
-			<slot />
+			<slot /> <!-- This is where all other layouts will insert content -->
 			<Footer />
 		</div>
 

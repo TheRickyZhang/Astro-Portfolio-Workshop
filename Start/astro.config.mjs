@@ -1,8 +1,16 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import react from '@astrojs/react'
+import path from 'path';
+import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react()],
+    integrations: [mdx()],
+    vite: {
+        resolve: {
+            alias: {
+                '@': path.resolve('./src')
+            }
+        }
+    }
 });
