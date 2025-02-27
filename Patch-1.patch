@@ -1,4 +1,4 @@
-From aaf815d046289aa956db951ac68ca183930c979b Mon Sep 17 00:00:00 2001
+From d8e0e870103092445007a8c66cb0be41dd1deb5a Mon Sep 17 00:00:00 2001
 From: Ricky Zhang <rickyzhang196@outlook.com>
 Date: Thu, 27 Feb 2025 14:01:48 -0500
 Subject: [PATCH] Patch 1: Minor text/image changes
@@ -11,13 +11,13 @@ Subject: [PATCH] Patch 1: Minor text/image changes
  Start/public/assets/portrait.png              | Bin 0 -> 1751851 bytes
  Start/public/favicon.svg                      |   9 ------
  Start/src/components/ContactCTA.astro         |   4 +--
- Start/src/components/Footer.astro             |  11 ++++---
- Start/src/components/MainHead.astro           |  10 +++---
- Start/src/components/Nav.astro                |  29 ++++++++++++------
+ Start/src/components/Footer.astro             |  11 +++----
+ Start/src/components/MainHead.astro           |  10 +++----
+ Start/src/components/Nav.astro                |  27 ++++++++++++------
  Start/src/pages/about.astro                   |   6 ++--
- Start/src/pages/index.astro                   |   8 ++---
+ Start/src/pages/index.astro                   |   8 +++---
  .../src/pages/{work.astro => projects.astro}  |   4 +--
- 13 files changed, 41 insertions(+), 40 deletions(-)
+ 13 files changed, 40 insertions(+), 39 deletions(-)
  rename Start/public/assets/{ => Unused}/at-work.jpg (100%)
  rename Start/public/assets/{ => Unused}/portrait.jpg (100%)
  create mode 100644 Start/public/assets/at-work.webp
@@ -37298,7 +37298,7 @@ index b4c7263..738e05d 100644
  />
  <script is:inline>
 diff --git a/Start/src/components/Nav.astro b/Start/src/components/Nav.astro
-index b1b5d4a..e8c5ce8 100644
+index 9d69707..e8c5ce8 100644
 --- a/Start/src/components/Nav.astro
 +++ b/Start/src/components/Nav.astro
 @@ -6,18 +6,15 @@ import type { iconPaths } from './IconPaths';
@@ -37379,13 +37379,6 @@ index b1b5d4a..e8c5ce8 100644
  <style>
  	nav {
  		z-index: 9999;
-@@ -350,4 +359,4 @@ const isCurrentPage = (href: string) => {
- 			color: SelectedItem;
- 		}
- 	}
--</style>
-\ No newline at end of file
-+</style>
 diff --git a/Start/src/pages/about.astro b/Start/src/pages/about.astro
 index 14e34ba..f317dbf 100644
 --- a/Start/src/pages/about.astro
