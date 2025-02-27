@@ -19,7 +19,7 @@ const { title, description, publishDate, img, img_alt } = Astro.props;
 			<h1>{title}</h1>
 			<p class="publish-date">{publishDate.toLocaleDateString()}</p>
 		</header>
-		<slot /> // This is where blog content goes
+		<slot /> <!-- This is where the blog post content goes -->
 	</article>
 </BaseLayout>
 
@@ -40,6 +40,7 @@ const { title, description, publishDate, img, img_alt } = Astro.props;
 	.publish-date {
 		color: var(--gray-400);
 		font-size: var(--text-md);
+		margin-top: 0.5rem;
 	}
 
 	@media (min-width: 50em) {

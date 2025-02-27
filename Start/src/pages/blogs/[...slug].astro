@@ -27,12 +27,6 @@ const { Content } = await render(entry);
   description={entry.data.description} 
   publishDate={entry.data.publishDate}
 >
-	<header>
-		<a class="back-link" href="/blogs/">← Back to Blogs</a>
-		<Hero title={entry.data.title} align="start">
-			<p class="publish-date">{entry.data.publishDate.toLocaleDateString()}</p>
-		</Hero>
-	</header>
 	<main>
 		{entry.data.img && (
 			<img src={entry.data.img} alt={entry.data.img_alt || ''} />
