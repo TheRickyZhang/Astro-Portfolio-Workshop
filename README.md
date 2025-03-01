@@ -1,4 +1,4 @@
-# Modified Template
+# Astro Workshop
 This is an enhanced version of Astro's provided portfolio template provided [here!](https://github.com/withastro/astro/tree/main/examples/portfolio) as part of UF SASE's Web Workshop: Personal Portfolio with Astro.
 
 Before starting, ensure you have the necessary tools:  
