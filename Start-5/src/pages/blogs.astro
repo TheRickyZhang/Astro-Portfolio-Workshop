@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/Hero.astro';
+import AllBlogs from '@/components/AllBlogs.astro';
+
+// Sort by new by default
+const blogs = (await getCollection('blogs')).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+---
+
+<BaseLayout
+  title="My Blogs | Ricky Zhang"
+  description="I have lots of things to say"
+>
+  <main class="wrapper stack gap-8">
+    <Hero
+      title="My Blogs"
+      tagline="I have lots of things to say"
+      align="start"
+    />
+    <AllBlogs blogs={blogs} />
+  </main>
+</BaseLayout>

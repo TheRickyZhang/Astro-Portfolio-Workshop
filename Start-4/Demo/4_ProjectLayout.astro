@@ -1,0 +1,41 @@
+<!-- ---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	tags: string[];
+	img?: string;
+	img_alt?: string;
+}
+
+const { title, description, tags, img, img_alt } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} layoutType="project">
+	<article class="project-container">
+		<header>
+			<a class="back-link" href="/projects/">← Back to Projects</a>
+			<h1>{title}</h1>
+			<p class="description">{description}</p>
+			<div class="tags">
+				{tags.map((t) => <span class="pill">{t}</span>)}
+			</div>
+		</header>
+		{img && <img src={img} alt={img_alt || ''} />}
+		<slot />
+	</article>
+</BaseLayout>
+
+<style>
+	.project-container {
+		max-width: 65ch;
+		margin: auto;
+		padding: 2rem;
+	}
+
+	.tags {
+		display: flex;
+		gap: 0.5rem;
+	}
+</style> -->

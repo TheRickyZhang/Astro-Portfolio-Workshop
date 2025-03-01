@@ -1,0 +1,50 @@
+<!-- ---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	publishDate: Date;
+	img? : string;
+	img_alt?: string;
+}
+
+const { title, description, publishDate, img, img_alt } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} layoutType="blog">
+	<article class="blog-container">
+		<header>
+			<a class="back-link" href="/blogs/">← Back to Blogs</a>
+			<h1>{title}</h1>
+			<p class="publish-date">{publishDate.toLocaleDateString()}</p>
+		</header>
+		<slot /> // This is where blog content goes
+	</article>
+</BaseLayout>
+
+<style>
+	.blog-container {
+		max-width: 65ch;
+		margin: auto;
+		padding: 2rem;
+	}
+
+	.back-link {
+		display: block;
+		margin-bottom: 1rem;
+		color: var(--accent-regular);
+		text-decoration: none;
+	}
+
+	.publish-date {
+		color: var(--gray-400);
+		font-size: var(--text-md);
+	}
+
+	@media (min-width: 50em) {
+		.blog-container {
+			padding: 3rem;
+		}
+	}
+</style> -->

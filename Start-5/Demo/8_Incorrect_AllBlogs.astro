@@ -1,0 +1,126 @@
+<!-- ---
+import BlogPreview from './BlogPreview.astro';
+
+interface Blog {
+	id: string;
+	data: {
+		title: string;
+		description: string;
+		publishDate: Date;
+		img: string;
+		img_alt?: string;
+	};
+}
+
+interface Props {
+	blogs: Blog[];
+}
+
+const { blogs } = Astro.props;
+const serializedData = JSON.stringify(blogs);
+
+---
+
+<div class="all-blogs">
+	<div class="search-header">
+		<input id="search-input" type="text" placeholder="Search blogs..." />
+		<select id="sort-dropdown">
+			<option value="newest">Newest</option>
+			<option value="oldest">Oldest</option>
+		</select>
+	</div>
+	<ul id="blog-list">
+		{blogs.map((blog) => (
+			<li>
+				<BlogPreview blog={blog} />
+			</li>
+		))}
+	</ul>
+</div>
+
+<script type="module" is:inline>
+	const blogs = {serializedData};
+	const searchInput = document.getElementById('search-input');
+	const sortDropdown = document.getElementById('sort-dropdown');
+	const blogList = document.getElementById('blog-list');
+
+	function renderBlogs(filteredBlogs) {
+		blogList.innerHTML = filteredBlogs
+			.map(
+				(blog) => 
+			<li>
+				<a href="/blogs/${blog.id}">
+					${blog.data.img ? <img src="${blog.data.img}" alt="${blog.data.img_alt || 'Featured Image'}" /> : ''}
+					<h2>${blog.data.title}</h2>
+					<p class="publish-date">${new Date(blog.data.publishDate).toLocaleDateString()}</p>
+					<p>${blog.data.description}</p>
+				</a>
+			</li>
+		
+			)
+			.join('');
+	}
+
+  function filterAndSortBlogs() {
+    console.log("Sorting by:", sortDropdown.value);
+    let filtered = blogs.filter((blog) =>
+      blog.data.title.toLowerCase().includes(searchInput.value.toLowerCase())
+    );
+    if (sortDropdown.value === 'oldest') {
+      filtered.sort((a, b) => new Date(a.data.publishDate) - new Date(b.data.publishDate));
+    } else {
+      filtered.sort((a, b) => new Date(b.data.publishDate) - new Date(a.data.publishDate));
+    }
+    console.log("Sorted dates:", filtered.map(blog => new Date(blog.data.publishDate)));
+    renderBlogs(filtered);
+  }
+
+
+	searchInput.addEventListener('input', filterAndSortBlogs);
+	sortDropdown.addEventListener('change', filterAndSortBlogs);
+</script>
+
+<style>
+	.all-blogs {
+		margin: 1rem auto;
+	}
+	.search-header {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+		margin-bottom: 1rem;
+	}
+	#search-input {
+		flex: 1;
+		padding: 0.5rem 1rem;
+
+		font-size: 1rem;
+		border: 1px solid #ddd;
+		border-radius: 9999px;
+		outline: none;
+	}
+	#sort-dropdown {
+		padding: 0.5rem;
+		font-size: 1rem;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		background: white;
+	}
+	#blog-list {
+		list-style: none;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem;
+	}
+	#blog-list li {
+		/* Additional styling if needed */
+	}
+  .blog-preview img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+</style> -->

@@ -1,0 +1,126 @@
+---
+import Icon from './Icon.astro';
+import { iconPaths } from './IconPaths';
+
+interface Skill {
+	title: string;
+	description: string;
+	icon?: keyof typeof iconPaths; // Type safety!
+}
+
+interface Props {
+	skills: Skill[];
+}
+
+const { skills } = Astro.props;
+---
+
+<section class="box skills">
+	<slot name="heading">
+		<div class="center">
+			<h2>Skills</h2>
+		</div>
+	</slot>
+	<div class="skills-grid">
+		{skills.map((skill) => (
+			<div class="skill-item">
+				<div class="skill-icon">
+					{skill.icon ? (
+						<Icon icon={skill.icon} color="var(--accent-regular)" size="2.5rem" gradient />
+					) : (
+						<slot name="icon" />
+					)}
+				</div>
+				<div class="skill-content">
+					<h3>{skill.title}</h3>
+					<p>{skill.description}</p>
+				</div>
+			</div>
+		))}
+	</div>
+</section>
+
+<!-- Old Definition -->
+<!-- <section class="box skills">
+	<div class="stack gap-2 lg:gap-4">
+		<Icon icon="terminal-window" color="var(--accent-regular)" size="2.5rem" gradient />
+		<h2>Full Stack</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+	</div>
+	<div class="stack gap-2 lg:gap-4">
+		<Icon icon="trophy" color="var(--accent-regular)" size="2.5rem" gradient />
+		<h2>Industry Leader</h2>
+		<p>Neque viverra justo nec ultrices dui. Est ultricies integer quis auctor elit.</p>
+	</div>
+	<div class="stack gap-2 lg:gap-4">
+		<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
+		<h2>Strategy-Minded</h2>
+		<p>Urna porttitor rhoncus dolor purus non enim praesent ornare.</p>
+	</div>
+</section> -->
+
+<style>
+	.box {
+		border: 1px solid var(--gray-800);
+		border-radius: 0.75rem;
+		padding: 1.5rem;
+		background-color: var(--gray-999_40);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.center {
+		text-align: center;
+		margin-bottom: 1rem;
+	}
+
+
+	.skills h2 {
+		font-size: var(--text-lg);
+	}
+
+	.skills-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+	}
+
+	.skill-item {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+	}
+
+	.skill-icon {
+		flex-shrink: 0;
+	}
+
+	.skill-content h3 {
+		margin: 0;
+		font-size: var(--text-lg);
+	}
+
+	.skill-content p {
+		margin: 0;
+		color: var(--gray-400);
+	}
+
+	@media (min-width: 50em) {
+		.box {
+			border-radius: 1.5rem;
+			padding: 2.5rem;
+		}
+
+		.skills h2 {
+			font-size: var(--text-2xl);
+		}
+
+		.skills-grid {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 3rem;
+		}
+
+		.skill-item {
+			gap: 2rem;
+		}
+	}
+</style>
